@@ -13,6 +13,7 @@ module.exports = {
       name: "cart",
       filename: "remoteEntry.js",
       exposes: { "./CartIndex": "./src/index.js" },
+      shared: ["faker"],
     }),
   ],
 };

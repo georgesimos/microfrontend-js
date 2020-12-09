@@ -13,6 +13,7 @@ module.exports = {
       name: "products",
       filename: "remoteEntry.js",
       exposes: { "./ProductsIndex": "./src/index.js" },
+      shared: ["faker"],
     }),
   ],
 };

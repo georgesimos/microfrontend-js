@@ -1,1 +1,1 @@
-# microfrontend-js
+# microfrontend

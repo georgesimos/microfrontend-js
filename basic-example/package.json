@@ -1,0 +1,14 @@
+{
+  "name": "@basic-example",
+  "private": true,
+  "scripts": {
+    "start": "lerna run --scope @basic-example/* --parallel start",
+    "build": "lerna run --scope @basic-example/* build",
+    "serve": "lerna run --scope @basic-example/* --parallel serve",
+    "clean": "lerna run --scope @basic-example/* --parallel clean",
+    "clean:node_modules": "lerna run --scope @basic-example/* --parallel clean:node_modules"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

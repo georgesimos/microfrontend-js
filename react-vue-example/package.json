@@ -1,0 +1,14 @@
+{
+  "name": "@react-vue-example",
+  "private": true,
+  "scripts": {
+    "start:force": "lerna run --scope @react-vue-example/* --parallel start",
+    "build": "lerna run --scope @react-vue-example/* build",
+    "serve": "lerna run --scope @react-vue-example/* --parallel serve",
+    "clean": "lerna run --scope @react-vue-example/* --parallel clean",
+    "clean:node_modules": "lerna run --scope @react-vue-example/* --parallel clean:node_modules"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

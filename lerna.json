@@ -1,5 +1,9 @@
 {
-  "packages": ["packages/*"],
+  "version": "0.0.0",
   "npmClient": "yarn",
-  "version": "0.0.0"
+  "useWorkspaces": true,
+  "packages": [
+    "basic-example/*",
+    "react-vue-example/*"
+  ]
 }

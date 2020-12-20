@@ -1,9 +1,20 @@
 {
   "name": "root",
+  "version": "0.0.0",
+  "description": "Examples showcasing Webpack 5's Module Federation",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "basic-example/*",
+      "react-vue-example/*"
+    ]
+  },
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "start": "lerna run start --stream"
+    "bootstrap": "lerna bootstrap --ignore-scripts",
+    "start": "lerna run start --stream",
+    "build": "lerna run --parallel build",
+    "clean": "lerna run --parallel clean",
+    "clean:node_modules": "lerna run --parallel clean:node_modules"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

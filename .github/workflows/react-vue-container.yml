@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: react-vue/container
+    working-directory: react-vue-example/container
 
 jobs:
   build:

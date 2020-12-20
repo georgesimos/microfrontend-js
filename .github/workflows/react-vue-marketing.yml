@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: react-vue/marketing
+    working-directory: react-vue-example/marketing
 
 jobs:
   build:

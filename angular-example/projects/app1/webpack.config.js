@@ -14,7 +14,10 @@ module.exports = {
       name: "app1",
       library: { type: "var", name: "app1" },
       filename: "remoteEntry.js",
-      exposes: { "./web-components": "./projects/app1/src/bootstrap.ts" },
+      exposes: {
+        "./Component": "./projects/app1/src/app/welcome/welcome.component.ts",
+        "./Module": "./projects/app1/src/app/remote/remote.module.ts",
+      },
       shared: ["@angular/core", "@angular/common", "@angular/router"],
     }),
   ],

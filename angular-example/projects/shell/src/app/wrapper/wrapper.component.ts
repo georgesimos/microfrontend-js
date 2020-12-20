@@ -1,35 +1,44 @@
 import {
-  AfterContentInit,
   Component,
-  ElementRef,
+  ComponentFactoryResolver,
+  Input,
+  OnDestroy,
+  OnInit,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { registry } from './../registry';
+import { registry } from '../registry';
 
 @Component({
   selector: 'app-wrapper',
   templateUrl: './wrapper.component.html',
   styleUrls: ['./wrapper.component.scss'],
 })
-export class WrapperComponent implements AfterContentInit {
-  @ViewChild('wrapper', { read: ElementRef, static: true })
-  wrapper: ElementRef | undefined;
+export class WrapperComponent implements OnInit, OnDestroy {
+  @Input() remoteComponent!: string;
+  @Input() componentName!: string;
+  @ViewChild('wrapper', { read: ViewContainerRef, static: true })
+  wrapper: ViewContainerRef | any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
-  ngAfterContentInit(): void {
-    const elementName = this.route.snapshot.data['elementName'];
-    const importName = this.route.snapshot.data['importName'];
+  ngOnInit(): void {
+    this.load();
+  }
 
-    const importFn = registry[importName];
-    importFn()
-      .then((_: any) => console.debug(`element ${elementName} loaded!`))
-      .catch((err: any) => console.error(`error loading ${elementName}:`, err));
+  ngOnDestroy(): void {
+    this.wrapper.clear();
+  }
 
-    const element = document.createElement(elementName);
-    if (this.wrapper) {
-      this.wrapper.nativeElement.appendChild(element);
-    }
+  async load() {
+    const importComponent = registry[this.remoteComponent];
+    const component = await importComponent().then(
+      (m: { [x: string]: any }) => m[this.componentName]
+    );
+
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
+      component
+    );
+    this.wrapper.createComponent(componentFactory);
   }
 }

@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { WrapperComponent } from './wrapper/wrapper.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
+  { path: '', component: WelcomeComponent, pathMatch: 'full' },
   {
     path: 'app1',
-    component: WrapperComponent,
-    data: {
-      importName: 'app1',
-      elementName: 'app1-element',
-    },
+    loadChildren: () => import('app1/Module').then((m) => m.RemoteModule),
   },
 ];
 

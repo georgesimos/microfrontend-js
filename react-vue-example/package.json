@@ -1,5 +1,5 @@
 {
-  "name": "@react-vue-example",
+  "name": "react-vue-example",
   "private": true,
   "scripts": {
     "start:force": "lerna run --scope @react-vue-example/* --parallel start",

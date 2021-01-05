@@ -1,6 +1,5 @@
 {
   "version": "0.0.0",
   "npmClient": "yarn",
-  "useWorkspaces": true,
-  "packages": ["angular-example/*", "basic-example/*", "react-vue-example/*"]
+  "useWorkspaces": true
 }

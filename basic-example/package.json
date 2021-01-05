@@ -1,5 +1,5 @@
 {
-  "name": "@basic-example",
+  "name": "basic-example",
   "private": true,
   "scripts": {
     "start": "lerna run --scope @basic-example/* --parallel start",

@@ -1,14 +1,27 @@
 import React from "react";
 import ReactDom from "react-dom";
+import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
 // Mount function to start up the App
-const mount = (element) => ReactDom.render(<App />, element);
+const mount = (element, { defaultHistory, onNavigate }) => {
+  const history = defaultHistory || createMemoryHistory();
+  if (onNavigate) history.listen(onNavigate);
+  ReactDom.render(<App history={history} />, element);
+
+  return {
+    onParentNavigate({ pathname: nextPathname }) {
+      const { pathname } = history.location;
+      if (pathname !== nextPathname) history.push(nextPathname);
+    },
+  };
+};
 
 // Run in development mode and in isolation
 if (process.env.NODE_ENV === "development") {
   const element = document.getElementById("marketing-dev-root");
-  if (element) mount(element);
+
+  if (element) mount(element, { defaultHistory: createBrowserHistory() });
 }
 
 // Running through container and Exporting mount function

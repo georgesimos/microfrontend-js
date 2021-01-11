@@ -12,6 +12,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap --ignore-scripts",
     "start": "lerna run start --stream",
+    "start:react-vue:": "lerna run --scope @react-vue-example/* --parallel start",
     "build": "lerna run --parallel build",
     "clean": "lerna run --parallel clean",
     "clean:node_modules": "lerna run --parallel clean:node_modules"
